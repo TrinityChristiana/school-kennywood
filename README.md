@@ -20,3 +20,4 @@
 * Run your server
 
   * `python manage.py runserver`
+# school-kennywood
