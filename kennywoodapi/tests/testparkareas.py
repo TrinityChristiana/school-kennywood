@@ -42,6 +42,7 @@ class TestParkAreas(TestCase):
 
         # Assert: Is the parkarea in the database the one we just created?
         self.assertEqual(ParkArea.objects.get().name, new_parkarea["name"])
+        self.assertEqual(ParkArea.objects.get().theme, new_parkarea["theme"])
 
     def testGetParkarea(self):
         new_parkarea = ParkArea.objects.create(
@@ -63,6 +64,7 @@ class TestParkAreas(TestCase):
         # First, test the contents of the data before serialization
         self.assertEqual(response.data[0]["id"], 1)
         self.assertEqual(response.data[0]["name"], new_parkarea.name)
+        self.assertEqual(response.data[0]["theme"], new_parkarea.theme)
 
         # Then, test the actual rendered content as the client would receive it.
         # .encode converts from unicode to utf-8. Don't get hung up on this. It's just how we can compare apples to apples
